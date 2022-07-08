@@ -43,8 +43,8 @@
 <!--end::Root-->
 
 <!--begin::Drawers-->
-{{ theme()->getView('partials/topbar/_activity-drawer') }}
-{{ theme()->getView('pages/apps/chat/_partials/_drawer-messenger') }}
+{{-- {{ theme()->getView('partials/topbar/_activity-drawer') }} --}}
+{{-- {{ theme()->getView('pages/apps/chat/_partials/_drawer-messenger') }} --}}
 <!--end::Drawers-->
 
 <!--begin::Engage-->
