@@ -91,7 +91,7 @@ return array(
 
         // Changelog
         array(
-            'title'            => 'Changelog <span class="badge badge-changelog badge-light-danger bg-hover-danger text-hover-white fw-bold fs-9 px-2 ms-2">v'.theme()->getVersion().'</span>',
+            'title'            => 'Changelog <span class="badge badge-changelog badge-light-danger bg-hover-danger text-hover-white fw-bold fs-9 px-2 ms-2">v' . theme()->getVersion() . '</span>',
             'breadcrumb-title' => 'Changelog',
             'path'             => 'documentation/getting-started/changelog',
         ),
@@ -208,6 +208,49 @@ return array(
             'content' => '<span class="menu-section text-muted text-uppercase fs-8 ls-1">Modules</span>',
         ),
 
+        // Pages
+        array(
+            'title'      => 'Pages',
+            'icon'       => array(
+                'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/layouts/lay005.svg", "svg-icon-2"),
+                'font' => '<i class="bi bi-person fs-2"></i>',
+            ),
+            'classes'    => array('item' => 'menu-accordion'),
+            'attributes' => array(
+                "data-kt-menu-trigger" => "click",
+            ),
+            'sub'        => array(
+                'class' => 'menu-sub-accordion menu-active-bg',
+                'items' => array(
+                    array(
+                        'title'  => 'Home',
+                        'path'   => 'pages/home',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Company Overview',
+                        'path'   => 'pages/company-overview',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Our Values',
+                        'path'   => 'pages/our-values',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Management Profiles',
+                        'path'   => 'pages/management-profiles',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                ),
+            ),
+        ),
+
+        // Separator
+        array(
+            'content' => '<div class="separator mx-1 my-4"></div>',
+        ),
+
         // Account
         array(
             'title'      => 'Account',
@@ -251,58 +294,58 @@ return array(
         ),
 
         // System
-        array(
-            'title'      => 'System',
-            'icon'       => array(
-                'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/general/gen025.svg", "svg-icon-2"),
-                'font' => '<i class="bi bi-layers fs-3"></i>',
-            ),
-            'classes'    => array('item' => 'menu-accordion'),
-            'attributes' => array(
-                "data-kt-menu-trigger" => "click",
-            ),
-            'sub'        => array(
-                'class' => 'menu-sub-accordion menu-active-bg',
-                'items' => array(
-                    array(
-                        'title'      => 'Settings',
-                        'path'       => '#',
-                        'bullet'     => '<span class="bullet bullet-dot"></span>',
-                        'attributes' => array(
-                            'link' => array(
-                                "title"             => "Coming soon",
-                                "data-bs-toggle"    => "tooltip",
-                                "data-bs-trigger"   => "hover",
-                                "data-bs-dismiss"   => "click",
-                                "data-bs-placement" => "right",
-                            ),
-                        ),
-                    ),
-                    array(
-                        'title'  => 'Audit Log',
-                        'path'   => 'log/audit',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ),
-                    array(
-                        'title'  => 'System Log',
-                        'path'   => 'log/system',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ),
-                ),
-            ),
-        ),
+        // array(
+        //     'title'      => 'System',
+        //     'icon'       => array(
+        //         'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/general/gen025.svg", "svg-icon-2"),
+        //         'font' => '<i class="bi bi-layers fs-3"></i>',
+        //     ),
+        //     'classes'    => array('item' => 'menu-accordion'),
+        //     'attributes' => array(
+        //         "data-kt-menu-trigger" => "click",
+        //     ),
+        //     'sub'        => array(
+        //         'class' => 'menu-sub-accordion menu-active-bg',
+        //         'items' => array(
+        //             array(
+        //                 'title'      => 'Settings',
+        //                 'path'       => '#',
+        //                 'bullet'     => '<span class="bullet bullet-dot"></span>',
+        //                 'attributes' => array(
+        //                     'link' => array(
+        //                         "title"             => "Coming soon",
+        //                         "data-bs-toggle"    => "tooltip",
+        //                         "data-bs-trigger"   => "hover",
+        //                         "data-bs-dismiss"   => "click",
+        //                         "data-bs-placement" => "right",
+        //                     ),
+        //                 ),
+        //             ),
+        //             array(
+        //                 'title'  => 'Audit Log',
+        //                 'path'   => 'log/audit',
+        //                 'bullet' => '<span class="bullet bullet-dot"></span>',
+        //             ),
+        //             array(
+        //                 'title'  => 'System Log',
+        //                 'path'   => 'log/system',
+        //                 'bullet' => '<span class="bullet bullet-dot"></span>',
+        //             ),
+        //         ),
+        //     ),
+        // ),
 
         // Separator
-        array(
-            'content' => '<div class="separator mx-1 my-4"></div>',
-        ),
+        // array(
+        //     'content' => '<div class="separator mx-1 my-4"></div>',
+        // ),
 
         // Changelog
-        array(
-            'title' => 'Changelog v'.theme()->getVersion(),
-            'icon'  => theme()->getSvgIcon("demo1/media/icons/duotune/general/gen005.svg", "svg-icon-2"),
-            'path'  => 'documentation/getting-started/changelog',
-        ),
+        // array(
+        //     'title' => 'Changelog v'.theme()->getVersion(),
+        //     'icon'  => theme()->getSvgIcon("demo1/media/icons/duotune/general/gen005.svg", "svg-icon-2"),
+        //     'path'  => 'documentation/getting-started/changelog',
+        // ),
     ),
 
     // Horizontal menu

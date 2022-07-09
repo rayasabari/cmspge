@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\SocialiteLoginController;
 use App\Http\Controllers\Documentation\ReferencesController;
 use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
+use App\Http\Controllers\Pages\HomePageController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,14 @@ Route::prefix('documentation')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    // Pages Management
+    Route::prefix('pages')->group(function () {
+        Route::get('home', [HomePageController::class, 'index'])->name('home.index');
+        // Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
+        // Route::put('settings/email', [SettingsController::class, 'changeEmail'])->name('settings.changeEmail');
+        // Route::put('settings/password', [SettingsController::class, 'changePassword'])->name('settings.changePassword');
+    });
+
     // Account pages
     Route::prefix('account')->group(function () {
         Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
