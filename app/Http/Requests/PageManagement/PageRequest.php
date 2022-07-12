@@ -25,7 +25,7 @@ class PageRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:pages',
+            'slug' => 'required|string|max:255|unique:pages,slug,' . $this->id,
         ];
     }
 }
