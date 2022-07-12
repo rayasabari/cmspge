@@ -227,11 +227,11 @@ return array(
                         'path'   => 'pages',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
-                    array(
-                        'title'  => 'Add New',
-                        'path'   => 'pages/add',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ),
+                    // array(
+                    //     'title'  => 'Add New',
+                    //     'path'   => 'pages/add',
+                    //     'bullet' => '<span class="bullet bullet-dot"></span>',
+                    // ),
                 ),
             ),
         ),
@@ -363,11 +363,11 @@ return array(
                         'path'   => 'pages',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
-                    array(
-                        'title'  => 'Add New',
-                        'path'   => 'pages/add',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ),
+                    // array(
+                    //     'title'  => 'Add New',
+                    //     'path'   => 'pages/add',
+                    //     'bullet' => '<span class="bullet bullet-dot"></span>',
+                    // ),
                 ),
             ),
         ),

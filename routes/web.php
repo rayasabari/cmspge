@@ -45,14 +45,10 @@ Route::get('/index', function () {
 Route::middleware('auth')->group(function () {
     // Pages Management
     Route::prefix('pages')->group(function () {
-        Route::get('home-front', [HomeFrontController::class, 'view'])->name('home-front.view');
-        Route::get('home-front/getdata', [HomeFrontController::class, 'getData']);
-        Route::post('home-front/savedata', [HomeFrontController::class, 'saveData']);
-
         Route::get('', [PageManagementController::class, 'indexView'])->name('pages.index');
-        Route::get('add', [PageManagementController::class, 'addView'])->name('pages.add');
         Route::get('getindex', [PageManagementController::class, 'getIndex']);
-        Route::post('add', [PageManagementController::class, 'add']);
+        Route::post('submit', [PageManagementController::class, 'submit']);
+        Route::delete('delete/{id}', [PageManagementController::class, 'delete']);
     });
 
     // Account pages
