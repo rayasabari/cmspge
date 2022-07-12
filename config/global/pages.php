@@ -17,7 +17,7 @@ return array(
         ),
     ),
 
-    'login'           => array(
+    'login' => array(
         'title'  => 'Login',
         'assets' => array(
             'custom' => array(
@@ -35,7 +35,7 @@ return array(
             ),
         ),
     ),
-    'register'        => array(
+    'register' => array(
         'title'  => 'Register',
         'assets' => array(
             'custom' => array(
@@ -101,6 +101,32 @@ return array(
         ),
     ),
 
+
+    'pages' => array(
+        '*' => array(
+            'title'  => 'Page Management',
+            'view'   => 'pagee/index',
+            'assets' => array(
+                'custom' => array(
+                    'js' => array(
+                        'js/custom/widgets.js',
+                    ),
+                ),
+            ),
+        ),
+        'add' => array(
+            'title'  => 'Page Management',
+            'view'   => 'pages/add',
+            'assets' => array(
+                'custom' => array(
+                    'js' => array(
+                        'js/custom/widgets.js',
+                    ),
+                ),
+            ),
+        ),
+    ),
+
     'account' => array(
         'overview' => array(
             'title'  => 'Account Overview',
@@ -128,7 +154,7 @@ return array(
         ),
     ),
 
-    'users'         => array(
+    'users' => array(
         'title' => 'User List',
 
         '*' => array(

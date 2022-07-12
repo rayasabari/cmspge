@@ -22,7 +22,8 @@ class PagesController extends Controller
         }
 
         // Get the default inner page
-        return redirect('/');
+        // return redirect('/');
+        return view('inner');
     }
 
     /**

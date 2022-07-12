@@ -18,26 +18,15 @@ class UsersSeeder extends Seeder
     public function run(Generator $faker)
     {
         $demoUser = User::create([
-            'first_name'        => $faker->firstName,
-            'last_name'         => $faker->lastName,
-            'email'             => 'demo@rayasabari.com',
-            'password'          => Hash::make('pgedemo'),
+            'first_name'        => 'Super',
+            'last_name'         => 'Admin',
+            'email'             => 'admin@rayasabari.com',
+            'password'          => Hash::make('rysbadmin'),
             'email_verified_at' => now(),
-            'api_token'         => Hash::make('demo@demo'),
+            'api_token'         => Hash::make('admin@admin'),
         ]);
 
         $this->addDummyInfo($faker, $demoUser);
-
-        $demoUser2 = User::create([
-            'first_name'        => $faker->firstName,
-            'last_name'         => $faker->lastName,
-            'email'             => 'admin@rayasabari.com',
-            'password'          => Hash::make('pgeadmin'),
-            'email_verified_at' => now(),
-            'api_token'         => Hash::make('admin@demo'),
-        ]);
-
-        $this->addDummyInfo($faker, $demoUser2);
 
         // User::factory(100)->create()->each(function (User $user) use ($faker) {
         //     $this->addDummyInfo($faker, $user);
@@ -47,11 +36,11 @@ class UsersSeeder extends Seeder
     private function addDummyInfo(Generator $faker, User $user)
     {
         $dummyInfo = [
-            'company'  => $faker->company,
+            'company'  => 'RYSB',
             'phone'    => $faker->phoneNumber,
-            'website'  => $faker->url,
-            'language' => $faker->languageCode,
-            'country'  => $faker->countryCode,
+            'website'  => 'www.rayasabari.com',
+            'language' => 'id',
+            'country'  => 'ID',
         ];
 
         $info = new UserInfo();

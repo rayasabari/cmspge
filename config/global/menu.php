@@ -210,7 +210,7 @@ return array(
 
         // Pages
         array(
-            'title'      => 'Pages',
+            'title' => 'Pages',
             'icon'       => array(
                 'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/layouts/lay005.svg", "svg-icon-2"),
                 'font' => '<i class="bi bi-person fs-2"></i>',
@@ -223,23 +223,13 @@ return array(
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => array(
                     array(
-                        'title'  => 'Home',
-                        'path'   => 'pages/home',
+                        'title'  => 'Index',
+                        'path'   => 'pages',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                     array(
-                        'title'  => 'Company Overview',
-                        'path'   => 'pages/company-overview',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ),
-                    array(
-                        'title'  => 'Our Values',
-                        'path'   => 'pages/our-values',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ),
-                    array(
-                        'title'  => 'Management Profiles',
-                        'path'   => 'pages/management-profiles',
+                        'title'  => 'Add New',
+                        'path'   => 'pages/add',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                 ),
@@ -275,20 +265,20 @@ return array(
                         'path'   => 'account/settings',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
-                    array(
-                        'title'      => 'Security',
-                        'path'       => '#',
-                        'bullet'     => '<span class="bullet bullet-dot"></span>',
-                        'attributes' => array(
-                            'link' => array(
-                                "title"             => "Coming soon",
-                                "data-bs-toggle"    => "tooltip",
-                                "data-bs-trigger"   => "hover",
-                                "data-bs-dismiss"   => "click",
-                                "data-bs-placement" => "right",
-                            ),
-                        ),
-                    ),
+                    // array(
+                    //     'title'      => 'Security',
+                    //     'path'       => '#',
+                    //     'bullet'     => '<span class="bullet bullet-dot"></span>',
+                    //     'attributes' => array(
+                    //         'link' => array(
+                    //             "title"             => "Coming soon",
+                    //             "data-bs-toggle"    => "tooltip",
+                    //             "data-bs-trigger"   => "hover",
+                    //             "data-bs-dismiss"   => "click",
+                    //             "data-bs-placement" => "right",
+                    //         ),
+                    //     ),
+                    // ),
                 ),
             ),
         ),
@@ -355,6 +345,31 @@ return array(
             'title'   => 'Dashboard',
             'path'    => '',
             'classes' => array('item' => 'me-lg-1'),
+        ),
+
+        // Pages
+        array(
+            'title'      => 'Pages',
+            'classes'    => array('item' => 'menu-lg-down-accordion me-lg-1', 'arrow' => 'd-lg-none'),
+            'attributes' => array(
+                'data-kt-menu-trigger'   => "click",
+                'data-kt-menu-placement' => "bottom-start",
+            ),
+            'sub'        => array(
+                'class' => 'menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px',
+                'items' => array(
+                    array(
+                        'title'  => 'Index',
+                        'path'   => 'pages',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Add New',
+                        'path'   => 'pages/add',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                ),
+            ),
         ),
 
         // Resources

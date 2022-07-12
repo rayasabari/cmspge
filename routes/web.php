@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\SocialiteLoginController;
 use App\Http\Controllers\Documentation\ReferencesController;
 use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
-use App\Http\Controllers\Pages\HomePageController;
+use App\Http\Controllers\PageManagementController;
+use App\Http\Controllers\Pages\HomeFrontController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -37,19 +38,21 @@ array_walk($menu, function ($val) {
     }
 });
 
-// Documentations pages
-Route::prefix('documentation')->group(function () {
-    Route::get('getting-started/references', [ReferencesController::class, 'index']);
-    Route::get('getting-started/changelog', [PagesController::class, 'index']);
+Route::get('/index', function () {
+    return redirect('/');
 });
 
 Route::middleware('auth')->group(function () {
     // Pages Management
     Route::prefix('pages')->group(function () {
-        Route::get('home', [HomePageController::class, 'index'])->name('home.index');
-        // Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
-        // Route::put('settings/email', [SettingsController::class, 'changeEmail'])->name('settings.changeEmail');
-        // Route::put('settings/password', [SettingsController::class, 'changePassword'])->name('settings.changePassword');
+        Route::get('home-front', [HomeFrontController::class, 'view'])->name('home-front.view');
+        Route::get('home-front/getdata', [HomeFrontController::class, 'getData']);
+        Route::post('home-front/savedata', [HomeFrontController::class, 'saveData']);
+
+        Route::get('', [PageManagementController::class, 'indexView'])->name('pages.index');
+        Route::get('add', [PageManagementController::class, 'addView'])->name('pages.add');
+        Route::get('getindex', [PageManagementController::class, 'getIndex']);
+        Route::post('add', [PageManagementController::class, 'add']);
     });
 
     // Account pages
@@ -67,6 +70,13 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+
+// Documentations pages
+Route::prefix('documentation')->group(function () {
+    Route::get('getting-started/references', [ReferencesController::class, 'index']);
+    Route::get('getting-started/changelog', [PagesController::class, 'index']);
+});
+
 Route::resource('users', UsersController::class);
 
 /**
@@ -75,4 +85,4 @@ Route::resource('users', UsersController::class);
  */
 Route::get('/auth/redirect/{provider}', [SocialiteLoginController::class, 'redirect']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

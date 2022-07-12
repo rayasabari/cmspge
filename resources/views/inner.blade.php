@@ -1,4 +1,5 @@
 <x-base-layout>
 
-Home form
+    {{ request()->url() }}
+
 </x-base-layout>
