@@ -6,7 +6,7 @@
           @click="addPage()"
           type="button"
           data-bs-toggle="modal"
-          data-bs-target="#kt_modal_1"
+          data-bs-target="#pageModal"
           class="btn btn-sm btn-primary"
         >Add New</button>
       </template>
@@ -25,7 +25,7 @@
             <tr v-for="(page, index) in pages.data" :key="index">
               <td class="text-center">{{ index +1 }}</td>
               <td>
-                <a :href="`/pages/manage/${page.id}`" class="fw-bold">{{ page.title }}</a>
+                <a :href="`/pages/content-manager/${page.id}`" class="fw-bold">{{ page.title }}</a>
               </td>
               <td class="text-center">{{ page.user.first_name }}</td>
               <td class="text-center">{{ page.Created }}</td>
@@ -36,9 +36,9 @@
                     @click.prevent="editPage(page)"
                     class="text-primary"
                     data-bs-toggle="modal"
-                    data-bs-target="#kt_modal_1"
+                    data-bs-target="#pageModal"
                   >Edit</a>
-                  <a :href="`/pages/manage/${page.id}`" class="text-info">Manage</a>
+                  <a :href="`/pages/content-manager/${page.id}`" class="text-info">Content Manager</a>
                   <a href="#" @click.prevent="confirmDelete(page)" class="text-danger">Delete</a>
                 </span>
               </td>
@@ -54,9 +54,9 @@
 
     <!-- Begin::Modal Form  -->
     <form @submit.prevent="onSubmit">
-      <Modal :title="action+' Page'">
+      <Modal :title="action+' Page'" modalId="pageModal">
         <InputForm ref="modalForm" />
-        <template v-slot:submitButton>
+        <template v-slot:footer>
           <button type="button" ref="closeModal" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
         </template>

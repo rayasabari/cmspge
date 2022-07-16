@@ -26,6 +26,11 @@ class Page extends Model
         return $this->belongsTo(User::class, 'created_by_id');
     }
 
+    public function elements()
+    {
+        return $this->hasMany(Element::class);
+    }
+
     public function getCreatedAttribute()
     {
         return $this->created_at->diffForHumans();

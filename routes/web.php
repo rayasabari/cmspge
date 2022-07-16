@@ -49,6 +49,9 @@ Route::middleware('auth')->group(function () {
         Route::get('getindex', [PageManagementController::class, 'getIndex']);
         Route::post('submit', [PageManagementController::class, 'submit']);
         Route::delete('delete/{id}', [PageManagementController::class, 'delete']);
+
+        Route::get('content-manager/{id}', [PageManagementController::class, 'contentManagerView'])->name('pages.content-manager');
+        Route::get('content-manager/get/data/{id}', [PageManagementController::class, 'getContentManagerData']);
     });
 
     // Account pages

@@ -21,6 +21,7 @@ Vue.component('welcome-dashboard', require('./components/WelcomeDashboard.vue').
 
 // Pages 
 Vue.component('pages-index', require('./components/Pages/Index.vue').default);
+Vue.component('pages-content-manager', require('./components/Pages/ContentManager.vue').default);
 
 Vue.prototype.$axios = axios;
 Vue.prototype.Notify = Notify;

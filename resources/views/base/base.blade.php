@@ -94,7 +94,7 @@ License: {{ theme()->getOption('product', 'license') }}
     @endif
 
     @yield('content')
-    
+
     {{-- begin::Javascript --}}
     @if (theme()->hasOption('assets', 'js'))
     {{-- begin::Global Javascript Bundle(used by all pages) --}}

@@ -1,24 +1,48 @@
 <template>
-  <div class="card shadow-sm">
-    <div class="card-header">
+  <div class="card" :class="cardStyle">
+    <div v-if="title" class="card-header">
       <h3 class="card-title">{{title}}</h3>
       <div class="card-toolbar">
-        <slot name="toolbar"/>
+        <slot name="toolbar" />
       </div>
     </div>
     <div class="card-body">
-      <slot/>
+      <slot />
     </div>
     <div v-if="footer" class="card-footer">
-      <slot name="footer"/>
+      <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "IndexCard",
-  props: ['title', 'footer'],
+  name: "Card",
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    footer: {
+      type: Boolean,
+      default: false,
+    },
+    shadow: {
+      type: Boolean,
+      default: true,
+    },
+    border: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    cardStyle() {
+      let hasShadow = this.shadow ? "shadow-sm" : "";
+      let hasBorder = this.border ? "border" : "";
+      return hasShadow + " " + hasBorder;
+    },
+  },
 };
 </script>
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('elements', function (Blueprint $table) {
             $table->id();
             $table->integer('page_id')->nullable();
-            $table->integer('type_id')->nullable();
+            $table->integer('element_type_id')->nullable();
             $table->string('title')->nullable();
             $table->string('sub_title')->nullable();
             $table->longText('text')->nullable();

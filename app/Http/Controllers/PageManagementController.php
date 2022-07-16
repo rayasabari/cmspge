@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PageManagement\AddPagesRequest;
 use App\Http\Requests\PageManagement\PageRequest;
+use App\Models\ElementType;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,11 @@ class PageManagementController extends Controller
     public function indexView()
     {
         return view('pages.pages.index');
+    }
+
+    public function contentManagerView($id)
+    {
+        return view('pages.pages.content-manager', ['id' => $id]);
     }
 
     public function getIndex()
@@ -74,6 +80,26 @@ class PageManagementController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Page deleted successfully'
+        ], 200);
+    }
+
+    public function getContentManagerData($id)
+    {
+        try {
+            $elementType = ElementType::all();
+            $page = Page::with('elements')->findOrFail($id);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'elementType' => $elementType,
+                'page' => $page
+            ]
         ], 200);
     }
 }

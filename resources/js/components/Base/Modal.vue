@@ -1,15 +1,11 @@
 <template>
-  <div class="modal fade" tabindex="-1" id="kt_modal_1">
+  <div class="modal fade" tabindex="-1" :id="modalId">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">{{ title }}</h3>
 
-          <div
-            class="cursor-pointer"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          >
+          <div class="cursor-pointer" data-bs-dismiss="modal" aria-label="Close">
             <span class="svg-icon svg-icon-danger svg-icon-2">
               <svg
                 width="12"
@@ -36,8 +32,8 @@
           <slot />
         </div>
 
-        <div class="modal-footer">
-          <slot name="submitButton" />
+        <div v-if="footer" class="modal-footer">
+          <slot name="footer" />
         </div>
       </div>
     </div>
@@ -47,7 +43,20 @@
 <script>
 export default {
   name: "Modal",
-  props: ["title"],
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    modalId: {
+      type: String,
+      default: "kt_modal_1",
+    },
+    footer: {
+      type: Boolean,
+      default: true,
+    },
+  },
 };
 </script>
 

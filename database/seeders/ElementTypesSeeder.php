@@ -25,8 +25,8 @@ class ElementTypesSeeder extends Seeder
                 'name' => 'Text Editor'
             ],
             [
-                'slug' => 'card',
-                'name' => 'Card'
+                'slug' => 'collections',
+                'name' => 'Collections'
             ],
             [
                 'slug' => 'image',
@@ -37,8 +37,8 @@ class ElementTypesSeeder extends Seeder
                 'name' => 'Google Maps',
             ],
             [
-                'slug' => 'youtube',
-                'name' => 'YouTube',
+                'slug' => 'external-link',
+                'name' => 'Eksternal Link',
             ]
         ];
         ElementType::insert($elements);
