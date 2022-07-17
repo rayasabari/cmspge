@@ -211,9 +211,19 @@ return array(
         // Pages
         array(
             'title' => 'Pages',
+            'path'  => 'pages',
             'icon'       => array(
                 'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/layouts/lay005.svg", "svg-icon-2"),
                 'font' => '<i class="bi bi-person fs-2"></i>',
+            ),
+        ),
+
+        // Collections
+        array(
+            'title'      => 'Collections',
+            'icon'       => array(
+                'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/abstract/abs027.svg", "svg-icon-2"),
+                'font' => '<i class="bi bi-layers fs-3"></i>',
             ),
             'classes'    => array('item' => 'menu-accordion'),
             'attributes' => array(
@@ -223,15 +233,25 @@ return array(
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => array(
                     array(
-                        'title'  => 'Index',
-                        'path'   => 'pages',
+                        'title'  => 'Staff',
+                        'path'   => 'collections/staff',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
-                    // array(
-                    //     'title'  => 'Add New',
-                    //     'path'   => 'pages/add',
-                    //     'bullet' => '<span class="bullet bullet-dot"></span>',
-                    // ),
+                    array(
+                        'title'  => 'Values',
+                        'path'   => 'collections/values',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Services',
+                        'path'   => 'collections/services',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Expertise',
+                        'path'   => 'collections/expertise',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
                 ),
             ),
         ),
@@ -349,7 +369,14 @@ return array(
 
         // Pages
         array(
-            'title'      => 'Pages',
+            'title' => 'Pages',
+            'path'  => 'pages',
+            'classes' => array('item' => 'me-lg-1'),
+        ),
+
+        // Collections
+        array(
+            'title'      => 'Collections',
             'classes'    => array('item' => 'menu-lg-down-accordion me-lg-1', 'arrow' => 'd-lg-none'),
             'attributes' => array(
                 'data-kt-menu-trigger'   => "click",
@@ -359,18 +386,32 @@ return array(
                 'class' => 'menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px',
                 'items' => array(
                     array(
-                        'title'  => 'Index',
-                        'path'   => 'pages',
+                        'title'  => 'Services',
+                        'path'   => 'collections/services',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
-                    // array(
-                    //     'title'  => 'Add New',
-                    //     'path'   => 'pages/add',
-                    //     'bullet' => '<span class="bullet bullet-dot"></span>',
-                    // ),
                 ),
             ),
         ),
+
+        // array(
+        //     'title'      => 'Pages',
+        //     'classes'    => array('item' => 'menu-lg-down-accordion me-lg-1', 'arrow' => 'd-lg-none'),
+        //     'attributes' => array(
+        //         'data-kt-menu-trigger'   => "click",
+        //         'data-kt-menu-placement' => "bottom-start",
+        //     ),
+        //     'sub'        => array(
+        //         'class' => 'menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px',
+        //         'items' => array(
+        //             array(
+        //                 'title'  => 'Index',
+        //                 'path'   => 'pages',
+        //                 'bullet' => '<span class="bullet bullet-dot"></span>',
+        //             ),
+        //         ),
+        //     ),
+        // ),
 
         // Resources
         // array(

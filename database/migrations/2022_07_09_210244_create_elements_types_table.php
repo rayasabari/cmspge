@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('element_types', function (Blueprint $table) {
+        Schema::create('elements', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->nullable();
             $table->string('name')->nullable();

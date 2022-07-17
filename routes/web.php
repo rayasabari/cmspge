@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Account\SettingsController;
 use App\Http\Controllers\Auth\SocialiteLoginController;
+use App\Http\Controllers\CollectionsController;
 use App\Http\Controllers\Documentation\ReferencesController;
 use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
@@ -46,12 +47,20 @@ Route::middleware('auth')->group(function () {
     // Pages Management
     Route::prefix('pages')->group(function () {
         Route::get('', [PageManagementController::class, 'indexView'])->name('pages.index');
-        Route::get('getindex', [PageManagementController::class, 'getIndex']);
-        Route::post('submit', [PageManagementController::class, 'submit']);
+        Route::get('getdata', [PageManagementController::class, 'getPagesData']);
+        Route::post('submit', [PageManagementController::class, 'submitPage']);
         Route::delete('delete/{id}', [PageManagementController::class, 'delete']);
 
-        Route::get('content-manager/{id}', [PageManagementController::class, 'contentManagerView'])->name('pages.content-manager');
-        Route::get('content-manager/get/data/{id}', [PageManagementController::class, 'getContentManagerData']);
+        Route::get('content-manager/{slug}', [PageManagementController::class, 'contentManagerView'])->name('pages.content-manager');
+        Route::get('content-manager/getdata/{page:slug}', [PageManagementController::class, 'getContentData']);
+        Route::post('content-manager/submit', [PageManagementController::class, 'submitContent']);
+        Route::delete('content-manager/delete/{id}', [PageManagementController::class, 'deleteContent']);
+    });
+
+    // Collections Management
+    Route::prefix('collections')->group(function () {
+        // Services
+        Route::get('services', [CollectionsController::class, 'servicesView'])->name('collections.services');
     });
 
     // Account pages

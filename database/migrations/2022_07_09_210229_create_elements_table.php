@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('elements', function (Blueprint $table) {
+        Schema::create('contents', function (Blueprint $table) {
             $table->id();
             $table->integer('page_id')->nullable();
-            $table->integer('element_type_id')->nullable();
+            $table->integer('element_id')->nullable();
             $table->string('title')->nullable();
             $table->string('sub_title')->nullable();
             $table->longText('text')->nullable();

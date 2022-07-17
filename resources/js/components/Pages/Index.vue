@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Card title="Page Index" :footer="pages.last_page != 1">
+    <Card title="Pages" :footer="pages.last_page != 1">
       <template v-slot:toolbar>
         <button
           @click="addPage()"
@@ -18,14 +18,14 @@
               <th>Title</th>
               <th class="text-center">Author</th>
               <th class="text-center">Date</th>
-              <th class="text-center">Action</th>
+              <th class="text-center" width="22%">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(page, index) in pages.data" :key="index">
               <td class="text-center">{{ index +1 }}</td>
               <td>
-                <a :href="`/pages/content-manager/${page.id}`" class="fw-bold">{{ page.title }}</a>
+                <a :href="`/pages/content-manager/${page.slug}`" class="fw-bold">{{ page.title }}</a>
               </td>
               <td class="text-center">{{ page.user.first_name }}</td>
               <td class="text-center">{{ page.Created }}</td>
@@ -38,7 +38,7 @@
                     data-bs-toggle="modal"
                     data-bs-target="#pageModal"
                   >Edit</a>
-                  <a :href="`/pages/content-manager/${page.id}`" class="text-info">Content Manager</a>
+                  <a :href="`/pages/content-manager/${page.slug}`" class="text-success">Manage Content</a>
                   <a href="#" @click.prevent="confirmDelete(page)" class="text-danger">Delete</a>
                 </span>
               </td>
@@ -49,13 +49,17 @@
       <div v-else>
         <Alert color="primary" title="Info" message="There is no page created yet!" />
       </div>
-      <template v-slot:footer>Pagination</template>
+      <template v-slot:footer>
+        <Pagination
+          :data="pages"
+        />
+      </template>
     </Card>
 
     <!-- Begin::Modal Form  -->
     <form @submit.prevent="onSubmit">
       <Modal :title="action+' Page'" modalId="pageModal">
-        <InputForm ref="modalForm" />
+        <PageForm ref="pageForm" />
         <template v-slot:footer>
           <button type="button" ref="closeModal" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -71,14 +75,16 @@
 import Card from "../Base/Card.vue";
 import Alert from "../Base/Alert.vue";
 import Modal from "../Base/Modal.vue";
-import InputForm from "./InputForm.vue";
+import PageForm from "./PageForm.vue";
+import Pagination from '../Base/Pagination.vue';
 export default {
   name: "PageIndex",
   components: {
     Card,
     Alert,
     Modal,
-    InputForm,
+    PageForm,
+    Pagination
   },
   data() {
     return {
@@ -95,9 +101,9 @@ export default {
     });
   },
   methods: {
-    fetchData() {
+    fetchData(url = '/pages/getdata?page=1') {
       this.$axios
-        .get("/pages/getindex")
+        .get(url)
         .then((response) => {
           this.pages = response.data.data;
         })
@@ -107,14 +113,14 @@ export default {
     },
     addPage() {
       this.action = "Add";
-      this.$refs.modalForm.clearData();
+      this.$refs.pageForm.clearData();
     },
     editPage(page) {
       this.action = "Edit";
-      this.$refs.modalForm.getData(page);
+      this.$refs.pageForm.getData(page);
     },
     onSubmit() {
-      this.$refs.modalForm.submitData();
+      this.$refs.pageForm.submitData();
     },
     confirmDelete(page) {
       this.Confirm.show(

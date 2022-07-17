@@ -11,9 +11,9 @@
         <span>{{ element.name }}</span>
         <a
           href="#"
-          @click="$parent.$parent.addElement(element)"
+          @click="$parent.$parent.addContent(element)"
           data-bs-toggle="modal"
-          data-bs-target="#elementModal"
+          data-bs-target="#contentModal"
           class="text-primary"
         >Add</a>
       </div>
@@ -24,7 +24,7 @@
 <script>
 import Card from "../Base/Card.vue";
 export default {
-  name: "ElementType",
+  name: "Elements",
   props: ["elements"],
   components: {
     Card,

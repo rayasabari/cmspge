@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PageManagement\AddPagesRequest;
 use App\Http\Requests\PageManagement\PageRequest;
-use App\Models\ElementType;
+use App\Models\Content;
+use App\Models\Element;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
@@ -15,15 +15,15 @@ class PageManagementController extends Controller
         return view('pages.pages.index');
     }
 
-    public function contentManagerView($id)
+    public function contentManagerView($slug)
     {
-        return view('pages.pages.content-manager', ['id' => $id]);
+        return view('pages.pages.content-manager', ['slug' => $slug]);
     }
 
-    public function getIndex()
+    public function getPagesData()
     {
         try {
-            $data = Page::with(['user'])->latest()->paginate(10);
+            $data = Page::with(['user'])->orderBy('title', 'ASC')->paginate(10);
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
@@ -36,7 +36,7 @@ class PageManagementController extends Controller
         ], 200);
     }
 
-    public function submit(PageRequest $request)
+    public function submitPage(PageRequest $request)
     {
         try {
             Page::updateOrCreate(
@@ -83,11 +83,11 @@ class PageManagementController extends Controller
         ], 200);
     }
 
-    public function getContentManagerData($id)
+    public function getContentData(Page $page)
     {
         try {
-            $elementType = ElementType::all();
-            $page = Page::with('elements')->findOrFail($id);
+            $elements = Element::all();
+            $page = $page->load('contents');
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
@@ -97,9 +97,56 @@ class PageManagementController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => [
-                'elementType' => $elementType,
+                'elements' => $elements,
                 'page' => $page
             ]
+        ], 200);
+    }
+
+    public function submitContent(Request $request)
+    {
+        try {
+            Content::updateOrCreate(
+                ['id' => $request->id],
+                [
+                    'page_id' => $request->page_id,
+                    'element_id' => $request->element_id,
+                    'title' => $request->title,
+                    'sub_title' => $request->sub_title,
+                    'text' => $request->text,
+                    'created_by_id' => auth()->user()->id,
+                    'updated_by_id' => auth()->user()->id
+                ]
+            );
+        } catch (\Throwable $th) {
+            return response()->json([
+                'data' => $request->all(),
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'data' => $request->all(),
+            'status' => 'success',
+            'message' => 'Content submitted successfully'
+        ], 200);
+    }
+
+    public function deleteContent($id)
+    {
+        try {
+            Content::destroy($id);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Content deleted successfully'
         ], 200);
     }
 }

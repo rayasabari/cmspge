@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "InputForm",
+  name: "PageForm",
   data() {
     return {
       page: {

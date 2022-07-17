@@ -1,3 +1,3 @@
 <x-base-layout>
-  <pages-content-manager id="{{ $id }}"></pages-content-manager>
+  <pages-content-manager slug="{{ $slug }}"></pages-content-manager>
 </x-base-layout>

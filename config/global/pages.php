@@ -105,25 +105,20 @@ return array(
     'pages' => array(
         '*' => array(
             'title'  => 'Page Management',
-            'view'   => 'pagee/index',
-            'assets' => array(
-                'custom' => array(
-                    'js' => array(
-                        'js/custom/widgets.js',
-                    ),
-                ),
+            'view'   => 'pagee/pages/index',
+        ),
+        'content-manager'   => array(
+            '*' => array(
+                'title'       => 'Content Management',
+                'view'        => 'pages/pages/content-manager',
             ),
         ),
-        'add' => array(
-            'title'  => 'Page Management',
-            'view'   => 'pages/add',
-            'assets' => array(
-                'custom' => array(
-                    'js' => array(
-                        'js/custom/widgets.js',
-                    ),
-                ),
-            ),
+    ),
+
+    'collections' => array(
+        '*' => array(
+            'title'  => 'Collections Management',
+            'view'   => 'pagee/collection',
         ),
     ),
 

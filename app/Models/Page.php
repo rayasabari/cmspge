@@ -26,9 +26,9 @@ class Page extends Model
         return $this->belongsTo(User::class, 'created_by_id');
     }
 
-    public function elements()
+    public function contents()
     {
-        return $this->hasMany(Element::class);
+        return $this->hasMany(Content::class);
     }
 
     public function getCreatedAttribute()
