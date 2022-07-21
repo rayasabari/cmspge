@@ -20,7 +20,7 @@ class PageManagementController extends Controller
         return view('pages.pages.content-manager', ['slug' => $slug]);
     }
 
-    public function getPagesData()
+    public function getPages()
     {
         try {
             $data = Page::with(['user'])->orderBy('title', 'ASC')->paginate(10);
@@ -30,6 +30,7 @@ class PageManagementController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+
         return response()->json([
             'status' => 'success',
             'data' => $data
@@ -83,7 +84,7 @@ class PageManagementController extends Controller
         ], 200);
     }
 
-    public function getContentData(Page $page)
+    public function getContents(Page $page)
     {
         try {
             $elements = Element::all();
@@ -94,6 +95,7 @@ class PageManagementController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+
         return response()->json([
             'status' => 'success',
             'data' => [

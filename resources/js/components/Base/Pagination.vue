@@ -41,7 +41,7 @@ export default {
   props: ["data"],
   methods: {
     fetchData(url) {
-      this.$parent.$parent.fetchData(url);
+      this.$emit("fetch-data", url);
     },
   },
 };

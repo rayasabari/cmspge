@@ -47,12 +47,12 @@ Route::middleware('auth')->group(function () {
     // Pages Management
     Route::prefix('pages')->group(function () {
         Route::get('', [PageManagementController::class, 'indexView'])->name('pages.index');
-        Route::get('getdata', [PageManagementController::class, 'getPagesData']);
+        Route::get('get', [PageManagementController::class, 'getPages']);
         Route::post('submit', [PageManagementController::class, 'submitPage']);
         Route::delete('delete/{id}', [PageManagementController::class, 'delete']);
 
         Route::get('content-manager/{slug}', [PageManagementController::class, 'contentManagerView'])->name('pages.content-manager');
-        Route::get('content-manager/getdata/{page:slug}', [PageManagementController::class, 'getContentData']);
+        Route::get('content-manager/get/{page:slug}', [PageManagementController::class, 'getContents']);
         Route::post('content-manager/submit', [PageManagementController::class, 'submitContent']);
         Route::delete('content-manager/delete/{id}', [PageManagementController::class, 'deleteContent']);
     });
@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('collections')->group(function () {
         // Services
         Route::get('services', [CollectionsController::class, 'servicesView'])->name('collections.services');
+        Route::get('services/get', [CollectionsController::class, 'getServices']);
     });
 
     // Account pages

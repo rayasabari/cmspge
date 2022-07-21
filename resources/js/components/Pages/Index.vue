@@ -38,7 +38,10 @@
                     data-bs-toggle="modal"
                     data-bs-target="#pageModal"
                   >Edit</a>
-                  <a :href="`/pages/content-manager/${page.slug}`" class="text-success">Manage Content</a>
+                  <a
+                    :href="`/pages/content-manager/${page.slug}`"
+                    class="text-success"
+                  >Manage Content</a>
                   <a href="#" @click.prevent="confirmDelete(page)" class="text-danger">Delete</a>
                 </span>
               </td>
@@ -50,9 +53,7 @@
         <Alert color="primary" title="Info" message="There is no page created yet!" />
       </div>
       <template v-slot:footer>
-        <Pagination
-          :data="pages"
-        />
+        <Pagination :data="pages" @fetch-data="fetchData"/>
       </template>
     </Card>
 
@@ -67,7 +68,6 @@
       </Modal>
     </form>
     <!-- End::Modal Form  -->
-    
   </div>
 </template>
 
@@ -76,7 +76,7 @@ import Card from "../Base/Card.vue";
 import Alert from "../Base/Alert.vue";
 import Modal from "../Base/Modal.vue";
 import PageForm from "./PageForm.vue";
-import Pagination from '../Base/Pagination.vue';
+import Pagination from "../Base/Pagination.vue";
 export default {
   name: "PageIndex",
   components: {
@@ -84,7 +84,7 @@ export default {
     Alert,
     Modal,
     PageForm,
-    Pagination
+    Pagination,
   },
   data() {
     return {
@@ -101,7 +101,7 @@ export default {
     });
   },
   methods: {
-    fetchData(url = '/pages/getdata?page=1') {
+    fetchData(url = "/pages/get?page=1") {
       this.$axios
         .get(url)
         .then((response) => {

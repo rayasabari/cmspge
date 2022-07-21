@@ -1,11 +1,10 @@
 <template>
   <div class="mb-8">
     <h1>Hello {{ name }}!</h1>
-    <p>
+    <p class="">
       Welcome to
-      <span class="fst-italic">
-        <b class="fw-bold">RYSB</b> Admin
-      </span>
+      <b class="fw-bold fst-italic">Ryapi</b>,
+      the headless CMS by <b class="fw-bold fst-italic">RYSB</b>!
     </p>
   </div>
 </template>

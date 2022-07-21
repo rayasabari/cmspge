@@ -43,9 +43,9 @@ return array(
 
     // Meta
     'meta'    => array(
-        'title'       => 'RYSB Admin',
-        'description' => 'RYSB Management System.',
-        'keywords'    => 'RYSB, Raya Sabari, Rayasabari',
+        'title'       => 'Ryapi',
+        'description' => 'Headles CMS by RYSB.',
+        'keywords'    => 'RYSB, Raya Sabari, Rayasabari', 'ryapi',
         'canonical'   => 'https://rayasabari.com',
     ),
 

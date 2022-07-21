@@ -14,7 +14,7 @@ $logoFileName = 'default.svg';
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         {{--begin::Logo--}}
         <a href="{{ theme()->getPageUrl('') }}" class="text-white h2 fst-italic">
-            <div class="fw-bolder logo h-20px overflow-hidden">RYSB <small class="fw-light">Admin</small></div>
+            <div class="fw-bolder logo h-20px overflow-hidden">Ryapi &nbsp; &nbsp;</div>
         </a>
         {{--end::Logo--}}
 

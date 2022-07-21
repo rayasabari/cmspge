@@ -56,7 +56,7 @@ export default {
   methods: {
     fetchData() {
       this.$axios
-        .get("/pages/content-manager/getdata/" + this.slug)
+        .get("/pages/content-manager/get/" + this.slug)
         .then((response) => {
           this.page = response.data.data.page;
           this.elements = response.data.data.elements;

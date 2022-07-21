@@ -28,7 +28,7 @@
 				<img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'logos/default.svg') }}" class="h-15px" />
 			</a> --}}
 			<a href="{{ theme()->getPageUrl('') }}" class="d-lg-none text-dark fs-1 fst-italic">
-				<div class="fw-bolder logo h-20px overflow-hidden">RYSB <small class="fw-light">Admin</small></div>
+				<div class="fw-bolder overflow-hidden">Ryapi &nbsp; &nbsp;</div>
 			</a>
 		</div>
 		<!--end::Mobile logo-->
