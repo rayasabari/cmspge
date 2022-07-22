@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
         // Services
         Route::get('services', [CollectionsController::class, 'servicesView'])->name('collections.services');
         Route::get('services/get', [CollectionsController::class, 'getServices']);
+        Route::post('services/submit', [CollectionsController::class, 'submitService']);
+        Route::delete('services/delete/{id}', [CollectionsController::class, 'deleteService']);
     });
 
     // Account pages

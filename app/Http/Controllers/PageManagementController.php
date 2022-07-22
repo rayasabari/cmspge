@@ -54,14 +54,12 @@ class PageManagementController extends Controller
             );
         } catch (\Throwable $th) {
             return response()->json([
-                'data' => $request->all(),
                 'status' => 'error',
                 'message' => $th->getMessage()
             ], 500);
         }
 
         return response()->json([
-            'data' => $request->all(),
             'status' => 'success',
             'message' => 'Page submitted successfully'
         ], 200);

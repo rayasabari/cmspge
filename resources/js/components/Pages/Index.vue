@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Card title="Pages" :footer="pages.last_page != 1">
+    <Card title="Pages" :footer="pages.data && pages.last_page != 1">
       <template v-slot:toolbar>
         <button
           @click="addPage()"
@@ -50,10 +50,10 @@
         </table>
       </div>
       <div v-else>
-        <Alert color="primary" title="Info" message="There is no page created yet!" />
+        <EmptyDataAlert @on-click-add="addPage" target="#pageModal" />
       </div>
       <template v-slot:footer>
-        <Pagination :data="pages" @fetch-data="fetchData"/>
+        <Pagination :data="pages" @fetch-data="fetchData" />
       </template>
     </Card>
 
@@ -73,18 +73,18 @@
 
 <script>
 import Card from "../Base/Card.vue";
-import Alert from "../Base/Alert.vue";
 import Modal from "../Base/Modal.vue";
 import PageForm from "./PageForm.vue";
 import Pagination from "../Base/Pagination.vue";
+import EmptyDataAlert from "../Base/EmptyDataAlert.vue";
 export default {
   name: "PageIndex",
   components: {
     Card,
-    Alert,
     Modal,
     PageForm,
     Pagination,
+    EmptyDataAlert,
   },
   data() {
     return {
@@ -123,16 +123,26 @@ export default {
       this.$refs.pageForm.submitData();
     },
     confirmDelete(page) {
-      this.Confirm.show(
-        "Confirmation",
-        `Are you sure you want to delete ${page.title} page?`,
-        "Yes",
-        "No",
-        () => {
-          this.deletePage(page);
+      Swal.fire({
+        html: `Are you sure you want to delete ${page.title} Page?`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Ok, got it!",
+        cancelButtonText: "Nope, cancel it",
+        customClass: {
+          confirmButton: "btn btn-primary",
+          cancelButton: "btn btn-danger",
         },
-        () => {}
-      );
+      })
+        .then((result) => {
+          if (result.value) {
+            this.deletePage(page);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     deletePage(page) {
       this.$axios

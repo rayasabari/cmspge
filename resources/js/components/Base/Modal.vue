@@ -1,5 +1,10 @@
 <template>
-  <div class="modal fade" tabindex="-1" :id="modalId">
+  <div
+    class="modal fade"
+    tabindex="-1"
+    :id="modalId"
+    data-bs-backdrop="static"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
