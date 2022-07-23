@@ -1,3 +1,3 @@
 <x-base-layout>
-  <collections-services/>
+  <collections-expertise/>
 </x-base-layout>

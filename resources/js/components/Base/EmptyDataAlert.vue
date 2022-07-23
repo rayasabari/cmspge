@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import IconFileSearch from "../Base/Icons/FileSearch.vue";
+import IconFileSearch from "./Icons/FileSearch.vue";
 export default {
   name: "NoData",
   props: ["target"],

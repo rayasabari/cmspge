@@ -64,6 +64,18 @@ Route::middleware('auth')->group(function () {
         Route::get('services/get', [CollectionsController::class, 'getServices']);
         Route::post('services/submit', [CollectionsController::class, 'submitService']);
         Route::delete('services/delete/{id}', [CollectionsController::class, 'deleteService']);
+
+        // Staff
+        Route::get('staff', [CollectionsController::class, 'staffView'])->name('collections.staff');
+        Route::get('staff/get', [CollectionsController::class, 'getStaff']);
+        Route::post('staff/submit', [CollectionsController::class, 'submitStaff']);
+        Route::delete('staff/delete/{id}', [CollectionsController::class, 'deleteStaff']);
+
+        // Expertise
+        Route::get('expertise', [CollectionsController::class, 'expertiseView'])->name('collections.expertise');
+        Route::get('expertise/get', [CollectionsController::class, 'getExpertises']);
+        Route::post('expertise/submit', [CollectionsController::class, 'submitExpertise']);
+        Route::delete('expertise/delete/{id}', [CollectionsController::class, 'deleteExpertise']);
     });
 
     // Account pages

@@ -1,42 +1,42 @@
 <template>
   <div>
-    <Card title="Services" :footer="services.data && services.last_page != 1">
+    <Card title="Expertise" :footer="expertise.data && expertise.last_page != 1">
       <template v-slot:toolbar>
         <button
-          @click="addService()"
+          @click="addExpertise()"
           type="button"
           data-bs-toggle="modal"
-          data-bs-target="#serviceModal"
+          data-bs-target="#expertiseModal"
           class="btn btn-sm btn-primary"
         >Add New</button>
       </template>
-      <div v-if="services.total > 0" class="table-responsive">
+      <div v-if="expertise.total > 0" class="table-responsive">
         <table class="table table-hover table-row-bordered">
           <thead>
             <tr class="fw-bold fs-6 text-gray-800">
               <th class="text-center">#</th>
               <th>Name</th>
-              <th>Descriptions</th>
+              <th>Description</th>
               <th class="text-center">Date</th>
               <th class="text-center" width="22%">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(service, index) in services.data" :key="index">
+            <tr v-for="(expertise, index) in expertise.data" :key="index">
               <td class="text-center">{{ index +1 }}</td>
-              <td>{{ service.name }}</td>
-              <td>{{ service.description }}</td>
-              <td class="text-center">{{ service.Created }}</td>
+              <td>{{ expertise.name }}</td>
+              <td>{{ expertise.description }}</td>
+              <td class="text-center">{{ expertise.Created }}</td>
               <td class="text-center">
                 <span class="d-flex justify-content-center gap-4 fw-bold">
                   <a
                     href="#"
-                    @click.prevent="editService(service)"
+                    @click.prevent="editExpertise(expertise)"
                     class="text-primary"
                     data-bs-toggle="modal"
-                    data-bs-target="#serviceModal"
+                    data-bs-target="#expertiseModal"
                   >Edit</a>
-                  <a href="#" @click.prevent="confirmDelete(service)" class="text-danger">Delete</a>
+                  <a href="#" @click.prevent="confirmDelete(expertise)" class="text-danger">Delete</a>
                 </span>
               </td>
             </tr>
@@ -44,17 +44,17 @@
         </table>
       </div>
       <div v-else>
-        <EmptyDataAlert @on-click-add="addService" target="#serviceModal" />
+        <EmptyDataAlert @on-click-add="addExpertise" target="#expertiseModal" />
       </div>
       <template v-slot:footer>
-        <Pagination :data="services" @fetch-data="fetchData" />
+        <Pagination :data="expertise" @fetch-data="fetchData" />
       </template>
     </Card>
 
     <!-- Begin::Modal Form  -->
     <form @submit.prevent="onSubmit">
-      <Modal :title="action+' Service'" modalId="serviceModal">
-        <Form ref="serviceForm" @fetch-data="refetch" />
+      <Modal :title="action+' Expertise'" modalId="expertiseModal">
+        <Form ref="expertiseForm" @fetch-data="refetch" />
         <template v-slot:footer>
           <button type="button" ref="closeModal" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -69,10 +69,10 @@
 import Card from "../../Base/Card.vue";
 import Pagination from "../../Base/Pagination.vue";
 import Modal from "../../Base/Modal.vue";
-import Form from "./Form.vue";
+import Form from "../Expertise/Form.vue";
 import EmptyDataAlert from "../../Base/EmptyDataAlert.vue";
 export default {
-  name: "Services",
+  name: "Expertise",
   components: {
     Card,
     Pagination,
@@ -82,7 +82,7 @@ export default {
   },
   data() {
     return {
-      services: [],
+      expertise: [],
       action: "",
     };
   },
@@ -90,30 +90,30 @@ export default {
     this.fetchData();
   },
   methods: {
-    fetchData(url = "/collections/services/get?page=1") {
+    fetchData(url = "/collections/expertise/get?page=1") {
       this.$axios
         .get(url)
         .then((response) => {
-          this.services = response.data.data;
+          this.expertise = response.data.data;
         })
         .catch((error) => {
           console.log(error.response);
         });
     },
-    addService() {
+    addExpertise() {
       this.action = "Add";
-      this.$refs.serviceForm.clearData();
+      this.$refs.expertiseForm.clearData();
     },
-    editService(service) {
+    editExpertise(expertise) {
       this.action = "Edit";
-      this.$refs.serviceForm.getData(service);
+      this.$refs.expertiseForm.getData(expertise);
     },
     onSubmit() {
-      this.$refs.serviceForm.submitData();
+      this.$refs.expertiseForm.submitData();
     },
-    confirmDelete(service) {
+    confirmDelete(expertise) {
       Swal.fire({
-        html: `Are you sure you want to delete ${service.name}?`,
+        html: `Are you sure you want to delete ${expertise.name}?`,
         icon: "info",
         buttonsStyling: false,
         showCancelButton: true,
@@ -126,16 +126,16 @@ export default {
       })
         .then((result) => {
           if (result.value) {
-            this.deleteService(service);
+            this.deleteExpertise(expertise);
           }
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    deleteService(service) {
+    deleteExpertise(expertise) {
       this.$axios
-        .delete(`/collections/services/delete/${service.id}`)
+        .delete(`/collections/expertise/delete/${expertise.id}`)
         .then((response) => {
           this.Notify.success(response.data.message);
           this.fetchData();

@@ -10,14 +10,7 @@ class Service extends Model
     use HasFactory;
 
     protected $appends = ['Created'];
-    protected $fillable = [
-        'name',
-        'description',
-        'image',
-        'url',
-        'created_by_id',
-        'updated_by_id',
-    ];
+    protected $guarded = [];
 
     public function getCreatedAttribute()
     {
