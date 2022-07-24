@@ -28,7 +28,7 @@
                 <a :href="`/pages/content-manager/${page.slug}`" class="fw-bold">{{ page.title }}</a>
               </td>
               <td class="text-center">{{ page.user.first_name }}</td>
-              <td class="text-center">{{ page.Created }}</td>
+              <td class="text-center text-muted">{{ page.Created }}</td>
               <td class="text-center">
                 <span class="d-flex justify-content-center gap-4 fw-bold">
                   <a
@@ -60,7 +60,7 @@
     <!-- Begin::Modal Form  -->
     <form @submit.prevent="onSubmit">
       <Modal :title="action+' Page'" modalId="pageModal">
-        <PageForm ref="pageForm" />
+        <Form ref="pageForm" />
         <template v-slot:footer>
           <button type="button" ref="closeModal" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -74,7 +74,7 @@
 <script>
 import Card from "../Base/Card.vue";
 import Modal from "../Base/Modal.vue";
-import PageForm from "./PageForm.vue";
+import Form from "./Form.vue";
 import Pagination from "../Base/Pagination.vue";
 import EmptyDataAlert from "../Base/EmptyDataAlert.vue";
 export default {
@@ -82,7 +82,7 @@ export default {
   components: {
     Card,
     Modal,
-    PageForm,
+    Form,
     Pagination,
     EmptyDataAlert,
   },

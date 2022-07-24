@@ -26,7 +26,7 @@
               <td class="text-center">{{ index +1 }}</td>
               <td>{{ expertise.name }}</td>
               <td>{{ expertise.description }}</td>
-              <td class="text-center">{{ expertise.Created }}</td>
+              <td class="text-center text-muted">{{ expertise.Created }}</td>
               <td class="text-center">
                 <span class="d-flex justify-content-center gap-4 fw-bold">
                   <a

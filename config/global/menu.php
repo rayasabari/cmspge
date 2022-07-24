@@ -233,13 +233,13 @@ return array(
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => array(
                     array(
-                        'title'  => 'Staff',
-                        'path'   => 'collections/staff',
+                        'title'  => 'Achievements',
+                        'path'   => 'collections/achievements',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                     array(
-                        'title'  => 'Values',
-                        'path'   => 'collections/values',
+                        'title'  => 'Expertise',
+                        'path'   => 'collections/expertise',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                     array(
@@ -248,8 +248,13 @@ return array(
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                     array(
-                        'title'  => 'Expertise',
-                        'path'   => 'collections/expertise',
+                        'title'  => 'Staff',
+                        'path'   => 'collections/staff',
+                        'bullet' => '<span class="bullet bullet-dot"></span>',
+                    ),
+                    array(
+                        'title'  => 'Values',
+                        'path'   => 'collections/values',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
                     ),
                 ),

@@ -76,6 +76,19 @@ Route::middleware('auth')->group(function () {
         Route::get('expertise/get', [CollectionsController::class, 'getExpertises']);
         Route::post('expertise/submit', [CollectionsController::class, 'submitExpertise']);
         Route::delete('expertise/delete/{id}', [CollectionsController::class, 'deleteExpertise']);
+
+        // Values
+        Route::get('values', [CollectionsController::class, 'valuesView'])->name('collections.values');
+        Route::get('values/get', [CollectionsController::class, 'getValues']);
+        Route::post('values/submit', [CollectionsController::class, 'submitValue']);
+        Route::delete('values/delete/{id}', [CollectionsController::class, 'deleteValue']);
+
+        // Achievements
+        Route::get('achievements', [CollectionsController::class, 'achievementsView'])->name('collections.achievements');
+        Route::get('achievements/get', [CollectionsController::class, 'getAchievements']);
+        Route::post('achievements/submit', [CollectionsController::class, 'submitAchievement']);
+        Route::delete('achievements/delete/{id}', [CollectionsController::class, 'deleteAchievement']);
+
     });
 
     // Account pages

@@ -80,16 +80,26 @@ export default {
       this.$refs.contnntForm.submitData();
     },
     confirmDelete(content) {
-      this.Confirm.show(
-        "Confirmation",
-        `Are you sure you want to delete ${ content.element.name}?`,
-        "Yes",
-        "No",
-        () => {
-          this.deleteContent(content);
+      Swal.fire({
+        html: `Are you sure you want to delete ${content.name}?`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Ok, got it!",
+        cancelButtonText: "Nope, cancel it",
+        customClass: {
+          confirmButton: "btn btn-primary",
+          cancelButton: "btn btn-danger",
         },
-        () => {}
-      );
+      })
+        .then((result) => {
+          if (result.value) {
+            this.deleteContent(content);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     deleteContent(content) {
       this.$axios

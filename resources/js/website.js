@@ -27,6 +27,8 @@ Vue.component('pages-content-manager', require('./components/Pages/ContentManage
 Vue.component('collections-services', require('./components/Collections/Services/Index.vue').default);
 Vue.component('collections-staff', require('./components/Collections/Staff/Index.vue').default);
 Vue.component('collections-expertise', require('./components/Collections/Expertise/Index.vue').default);
+Vue.component('collections-values', require('./components/Collections/Values/Index.vue').default);
+Vue.component('collections-achievements', require('./components/Collections/Achievements/Index.vue').default);
 
 Vue.prototype.$axios = axios;
 Vue.prototype.Notify = Notify;

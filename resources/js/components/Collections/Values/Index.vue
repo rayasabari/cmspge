@@ -1,44 +1,42 @@
 <template>
   <div>
-    <Card title="Staff" :footer="staff.data && staff.last_page != 1">
+    <Card title="Values" :footer="values.data && values.last_page != 1">
       <template v-slot:toolbar>
         <button
-          @click="addStaff()"
+          @click="addValue()"
           type="button"
           data-bs-toggle="modal"
-          data-bs-target="#staffModal"
+          data-bs-target="#valueModal"
           class="btn btn-sm btn-primary"
         >Add New</button>
       </template>
-      <div v-if="staff.total > 0" class="table-responsive">
+      <div v-if="values.total > 0" class="table-responsive">
         <table class="table table-hover table-row-bordered">
           <thead>
             <tr class="fw-bold fs-6 text-gray-800">
               <th class="text-center">#</th>
               <th>Name</th>
-              <th>Position</th>
-              <th>Bio</th>
+              <th>Descriptions</th>
               <th class="text-center">Date</th>
               <th class="text-center" width="22%">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(staff, index) in staff.data" :key="index">
+            <tr v-for="(value, index) in values.data" :key="index">
               <td class="text-center">{{ index +1 }}</td>
-              <td>{{ staff.name }}</td>
-              <td>{{ staff.position }}</td>
-              <td>{{ staff.bio }}</td>
-              <td class="text-center text-muted">{{ staff.Created }}</td>
+              <td>{{ value.name }}</td>
+              <td>{{ value.description }}</td>
+              <td class="text-center text-muted">{{ value.Created }}</td>
               <td class="text-center">
                 <span class="d-flex justify-content-center gap-4 fw-bold">
                   <a
                     href="#"
-                    @click.prevent="editStaff(staff)"
+                    @click.prevent="editValue(value)"
                     class="text-primary"
                     data-bs-toggle="modal"
-                    data-bs-target="#staffModal"
+                    data-bs-target="#valueModal"
                   >Edit</a>
-                  <a href="#" @click.prevent="confirmDelete(staff)" class="text-danger">Delete</a>
+                  <a href="#" @click.prevent="confirmDelete(value)" class="text-danger">Delete</a>
                 </span>
               </td>
             </tr>
@@ -46,17 +44,17 @@
         </table>
       </div>
       <div v-else>
-        <EmptyDataAlert @on-click-add="addStaff" target="#staffModal" />
+        <EmptyDataAlert @on-click-add="addValue" target="#valueModal" />
       </div>
       <template v-slot:footer>
-        <Pagination :data="staff" @fetch-data="fetchData" />
+        <Pagination :data="values" @fetch-data="fetchData" />
       </template>
     </Card>
 
     <!-- Begin::Modal Form  -->
     <form @submit.prevent="onSubmit">
-      <Modal :title="action+' Staff'" modalId="staffModal">
-        <Form ref="staffForm" @fetch-data="refetch" />
+      <Modal :title="action+' Value'" modalId="valueModal">
+        <Form ref="valueForm" @fetch-data="refetch" />
         <template v-slot:footer>
           <button type="button" ref="closeModal" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -74,7 +72,7 @@ import Modal from "../../Base/Modal.vue";
 import Form from "./Form.vue";
 import EmptyDataAlert from "../../Base/EmptyDataAlert.vue";
 export default {
-  name: "Staff",
+  name: "Values",
   components: {
     Card,
     Pagination,
@@ -84,7 +82,7 @@ export default {
   },
   data() {
     return {
-      staff: [],
+      values: [],
       action: "",
     };
   },
@@ -92,30 +90,30 @@ export default {
     this.fetchData();
   },
   methods: {
-    fetchData(url = "/collections/staff/get?page=1") {
+    fetchData(url = "/collections/values/get?page=1") {
       this.$axios
         .get(url)
         .then((response) => {
-          this.staff = response.data.data;
+          this.values = response.data.data;
         })
         .catch((error) => {
           console.log(error.response);
         });
     },
-    addStaff() {
+    addValue() {
       this.action = "Add";
-      this.$refs.staffForm.clearData();
+      this.$refs.valueForm.clearData();
     },
-    editStaff(staff) {
+    editValue(value) {
       this.action = "Edit";
-      this.$refs.staffForm.getData(staff);
+      this.$refs.valueForm.getData(value);
     },
     onSubmit() {
-      this.$refs.staffForm.submitData();
+      this.$refs.valueForm.submitData();
     },
-    confirmDelete(staff) {
+    confirmDelete(value) {
       Swal.fire({
-        html: `Are you sure you want to delete ${staff.name}?`,
+        html: `Are you sure you want to delete ${value.name}?`,
         icon: "info",
         buttonsStyling: false,
         showCancelButton: true,
@@ -128,16 +126,16 @@ export default {
       })
         .then((result) => {
           if (result.value) {
-            this.deleteStaff(staff);
+            this.deleteValue(value);
           }
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    deleteStaff(staff) {
+    deleteValue(value) {
       this.$axios
-        .delete(`/collections/staff/delete/${staff.id}`)
+        .delete(`/collections/values/delete/${value.id}`)
         .then((response) => {
           this.Notify.success(response.data.message);
           this.fetchData();
