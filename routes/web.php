@@ -6,8 +6,8 @@ use App\Http\Controllers\CollectionsController;
 use App\Http\Controllers\Documentation\ReferencesController;
 use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PageManagementController;
-use App\Http\Controllers\Pages\HomeFrontController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +89,11 @@ Route::middleware('auth')->group(function () {
         Route::post('achievements/submit', [CollectionsController::class, 'submitAchievement']);
         Route::delete('achievements/delete/{id}', [CollectionsController::class, 'deleteAchievement']);
 
+    });
+
+    // Meida Library
+    Route::prefix('media')->group(function () {
+        Route::get('', [MediaController::class, 'indexView'])->name('media.index');
     });
 
     // Account pages

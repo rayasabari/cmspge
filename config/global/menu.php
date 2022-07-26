@@ -261,6 +261,16 @@ return array(
             ),
         ),
 
+        // Media LIbrary
+        array(
+            'title' => 'Media',
+            'path'  => 'media',
+            'icon'       => array(
+                'svg'  => theme()->getSvgIcon("demo1/media/icons/duotune/files/fil013.svg", "svg-icon-2"),
+                'font' => '<i class="bi bi-person fs-2"></i>',
+            ),
+        ),
+
         // Separator
         array(
             'content' => '<div class="separator mx-1 my-4"></div>',

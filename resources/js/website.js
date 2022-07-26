@@ -30,6 +30,9 @@ Vue.component('collections-expertise', require('./components/Collections/Experti
 Vue.component('collections-values', require('./components/Collections/Values/Index.vue').default);
 Vue.component('collections-achievements', require('./components/Collections/Achievements/Index.vue').default);
 
+// Media Library
+Vue.component('media-index', require('./components/Media/Index.vue').default);
+
 Vue.prototype.$axios = axios;
 Vue.prototype.Notify = Notify;
 Vue.prototype.Confirm = Confirm;
